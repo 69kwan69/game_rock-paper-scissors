@@ -7,11 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper and Scissors</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
+    <script src="narratorLines.js" defer></script>
+    <script src="rockPaperAndScissors.js" defer></script>
 </head>
 
-<body>
-    <!-- It's empty here :'( -->
+<body class="flex-center">
+
+    <h1 class="narrator">Choose a power:</h1>
+
+    <div class="playground">
+        <div class="card player flex-center" data-element="rock" data-description="Strength">
+            <img src="images/stone-axe_vector-transparent.png" alt="Rock">
+        </div>
+        <div class="card player flex-center" data-element="paper" data-description="Knowledge">
+            <img src="images/books_vector-transparent.png" alt="Paper">
+        </div>
+        <div class="card player flex-center" data-element="scissors" data-description="Flexibility">
+            <img src="images/garden-scissors_vector-transparent.png" alt="Scissors">
+        </div>
+
+        <div class="card opponent"
+            data-description="Hmm, the enemy doesn't seem to reveal himself until you play your card.">
+            <span class="description">OPPONENT</span>
+            <div class="card backface flex-center"><img
+                    src="images/joker-girl-silhouette-illustration-dancing-woman-juggling-card-suits-113353933.jpg"
+                    alt="Ah. You're cheating, aren't ya?"></div>
+        </div>
+    </div>
+
+    <button class="btn restart hidden">Play again</button>
 </body>
 
 </html>

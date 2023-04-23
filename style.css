@@ -1,1 +1,250 @@
-/* It's empty here :'( */
+/* CSS resets */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+}
+
+
+/* Utility Classes */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.unclickable {
+    pointer-events: none;
+}
+
+.win {
+    scale: 1.05;
+    transform: translateY(-10%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.lose img {
+    opacity: .5;
+}
+
+.draw::after {
+    content: '🤝';
+    font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    translate: 110% -50%;
+}
+
+.flip-animation {
+    animation: flip .5s forwards;
+}
+
+@keyframes flip {
+    from {
+        rotate: y 0deg;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        translate: -100% 0%;
+        scale: 1;
+    }
+
+    40% {
+        rotate: y 0deg;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        translate: -100% -10%;
+        scale: 1.05;
+    }
+
+    75% {
+        rotate: y 180deg;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        translate: -100% -10%;
+        scale: 1.05;
+    }
+
+    to {
+        rotate: y 180deg;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        translate: -100% 0%;
+        scale: 1;
+    }
+}
+
+.typing-animation {
+    animation: typing 2s steps(50, end);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* Styling Elements */
+body {
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 100vh;
+    user-select: none;
+}
+
+.narrator {
+    text-align: center;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.playground {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    position: relative;
+
+}
+
+.card {
+    flex-direction: column;
+
+    background: url('images/bg-front-card.jpg') no-repeat center / cover;
+    width: 13rem;
+    aspect-ratio: 5 / 7;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: .5rem;
+
+    transition: .1s;
+    cursor: pointer;
+}
+
+.card[data-element='rock'] img {
+    width: 60%;
+}
+
+.card[data-element='paper'] img {
+    width: 100%;
+}
+
+.card[data-element='scissors'] img {
+    width: 50%;
+}
+
+.card.player:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    scale: 1.05;
+    translate: 0% -10%;
+}
+
+.card.opponent {
+    translate: 80%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.card.opponent:hover {
+    translate: 40%;
+}
+
+.card.opponent .backface {
+    rotate: y 180deg;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.card.opponent .description {
+    letter-spacing: .5rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 1.4rem 4rem;
+
+    position: absolute;
+    right: -87%;
+    top: 38%;
+    transform-origin: center;
+    rotate: 90deg;
+}
+
+.restart.btn {
+    padding: .5rem 1rem;
+    border: none;
+    background: url('images/bg-front-card.jpg') no-repeat top left / cover;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: .3rem;
+    cursor: pointer;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% -100%;
+}
+
+.restart.btn:hover {
+    filter: brightness(95%);
+}
